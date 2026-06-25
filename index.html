@@ -42,10 +42,9 @@ a{color:inherit;text-decoration:none}
 /* ===== NAV ===== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 32px;display:flex;justify-content:space-between;align-items:center;transition:all .3s;background:linear-gradient(180deg,rgba(14,11,10,.7),rgba(14,11,10,0))}
 .nav.scrolled{background:rgba(14,11,10,.95);backdrop-filter:blur(14px);padding:14px 32px;border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:12px}
-.brand__mark{width:38px;height:38px;background:var(--orange);display:grid;place-items:center;font-family:var(--serif-cn);font-weight:900;font-size:18px;color:var(--ink);box-shadow:0 0 24px var(--orange-glow)}
-.brand__txt{font-family:var(--sans-en);font-weight:800;font-size:17px;letter-spacing:.04em}
-.brand__txt small{display:block;font-weight:500;font-size:10px;color:var(--gold);letter-spacing:.3em;text-transform:uppercase;margin-top:2px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand__mark{height:46px;width:auto;display:block;border-radius:6px}
+.brand__txt{font-family:var(--sans-en);font-weight:700;font-size:13px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
 .nav__links{display:flex;gap:30px;font-size:13px;font-weight:500;letter-spacing:.04em}
 .nav__links a{color:var(--rice-soft);transition:color .2s}
 .nav__links a:hover{color:var(--orange)}
@@ -201,12 +200,12 @@ section{padding:120px 32px}
 <!-- ===== NAV ===== -->
 <nav class="nav" id="nav">
   <a href="#top" class="brand">
-    <span class="brand__mark">合</span>
-    <span class="brand__txt">Gut Sync<small>Sync AI Temple</small></span>
+    <img class="brand__mark" src="imgs/gut-sync-logo.jpeg" alt="Gut Sync Limited">
+    <span class="brand__txt">AI Temple</span>
   </a>
   <div class="nav__links">
     <a href="#features">Features</a>
-    <a href="#app">App</a>
+    <a href="#app">WebApp</a>
     <a href="#vision">Vision</a>
     <a href="#team">Team</a>
   </div>
@@ -218,7 +217,7 @@ section{padding:120px 32px}
   <div class="hero__bg"></div>
   <div class="hero__inner">
     <div class="hero__content">
-      <span class="hero__eyebrow">Gut Sync · Sync AI Temple</span>
+      <span class="hero__eyebrow">Gut Sync AI Temple</span>
       <h1 class="hero__h1">Ancient wisdom,<br><b>instantly synced.</b></h1>
       <div class="hero__cn">千年玄學 <span>·</span> 一念同步</div>
       <p class="hero__lede">
@@ -457,13 +456,16 @@ section{padding:120px 32px}
   <div class="cta__inner">
     <h2>Let's sync.</h2>
     <div class="cta__cn">有興趣了解更多？與我們對話。</div>
-    <a class="cta__email" href="mailto:hello@gut-sync.com">hello@gut-sync.com</a>
-    <div class="cta__meta">Hong Kong · 香港 · <b>尖沙咀冠華中心</b></div>
+    <a class="cta__email" href="mailto:gutsyncai@gmail.com">gutsyncai@gmail.com</a>
+    <div class="cta__meta">
+      <b>Unit 603B, Mirror Tower, 61 Mody Road, Tsim Sha Tsui, Hong Kong</b><br>
+      <span style="text-transform:none;letter-spacing:.05em">香港尖沙咀麼地道61號冠華中心603B室</span>
+    </div>
   </div>
 </section>
 
 <footer class="footer">
-  © 2026 Gut Sync · <a href="https://syncbuddy.ai">A SyncBuddy Tech Limited Initiative</a> · syncbuddy.ai
+  © 2026 GUT SYNC LIMITED · <a href="https://syncbuddy.ai">A SYNCBUDDY TECH LIMITED initiative</a> · <a href="https://www.syncbuddy.ai">www.syncbuddy.ai</a>
 </footer>
 
 <script>
