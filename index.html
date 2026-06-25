@@ -159,20 +159,24 @@ section{padding:120px 32px}
 /* ===== TEAM ===== */
 .team{background:linear-gradient(180deg,var(--ink) 0%,var(--ink-soft) 100%);text-align:center}
 .team__lede{max-width:640px;margin:0 auto 64px;font-family:var(--serif-en);font-style:italic;font-size:20px;line-height:1.6;color:var(--rice-soft)}
-.team__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left}
-@media(max-width:1024px){.team__grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:540px){.team__grid{grid-template-columns:1fr}}
-.member{background:var(--ink-card);border:1px solid var(--line);overflow:hidden;transition:all .3s}
+.team__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:left}
+@media(max-width:768px){.team__grid{grid-template-columns:1fr}}
+.member{background:var(--ink-card);border:1px solid var(--line);transition:all .3s;display:grid;grid-template-columns:96px 1fr;gap:20px;padding:22px 24px;align-items:start}
 .member:hover{border-color:var(--orange)}
-.member__photo{aspect-ratio:1/1;background-size:cover;background-position:center;filter:contrast(1.05) saturate(.9);transition:transform .5s}
-.member:hover .member__photo{transform:scale(1.05)}
-.member__body{padding:20px 20px 24px}
-.member__name-en{font-family:var(--serif-en);font-weight:600;font-size:21px;color:var(--rice);letter-spacing:.02em;line-height:1.1}
-.member__name-cn{font-family:var(--serif-cn);font-weight:500;font-size:14px;color:var(--gold);margin-top:4px;letter-spacing:.1em}
-.member__role{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-top:12px;font-weight:700}
-.member__creds{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;line-height:1.55;color:var(--rice-soft)}
+.member__photo{width:96px;height:120px;background-size:cover;background-position:center 18%;filter:contrast(1.05) saturate(.9);transition:transform .5s}
+.member:hover .member__photo{transform:scale(1.04)}
+.member__name-en{font-family:var(--serif-en);font-weight:600;font-size:20px;color:var(--rice);letter-spacing:.02em;line-height:1.1}
+.member__name-cn{font-family:var(--serif-cn);font-weight:500;font-size:13px;color:var(--gold);margin-top:3px;letter-spacing:.1em}
+.member__role{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--orange);margin-top:10px;font-weight:700}
+.member__creds{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:11.5px;line-height:1.55;color:var(--rice-soft)}
 .member__creds li{list-style:none;padding-left:12px;position:relative;margin-bottom:2px}
 .member__creds li::before{content:"·";position:absolute;left:0;color:var(--orange)}
+.member__creds--hidden{display:none}
+.member.expanded .member__creds--hidden{display:list-item}
+.member__more{background:none;border:none;cursor:pointer;font-family:var(--sans-en);font-size:11px;font-weight:600;color:var(--orange);padding:8px 0 0;letter-spacing:.05em;display:inline-flex;align-items:center;gap:4px;transition:color .2s}
+.member__more:hover{color:var(--orange-deep)}
+.member__more::after{content:"↓";font-size:14px;transition:transform .3s}
+.member.expanded .member__more::after{transform:rotate(180deg)}
 
 /* ===== CTA ===== */
 .cta{background:var(--ink-soft);text-align:center;padding:120px 32px;position:relative;overflow:hidden}
@@ -373,7 +377,7 @@ section{padding:120px 32px}
     <div class="team__grid">
       <article class="member reveal">
         <div class="member__photo" style="background-image:url('./team-photos/carine.jpg')" onerror="this.style.display='none'"></div>
-        <div class="member__body">
+        <div class="member__content">
           <div class="member__name-en">Carine Tam</div>
           <div class="member__name-cn">譚杏賢</div>
           <div class="member__role">Founder · CEO</div>
@@ -381,18 +385,19 @@ section{padding:120px 32px}
             <li>HKICPA</li>
             <li>HKACG</li>
             <li>MScISM (HKUST)</li>
-            <li>BBA (CUHK)</li>
-            <li>Charter President, The Rotary Club of Kwai Tsing</li>
-            <li>Vice President, Hong Kong Kowloon City Industry and Commerce Association</li>
-            <li>Vice President, Federation of Community Chest of Kowloon City</li>
-            <li>Deputy Commander, The Hong Kong Road Safety Patrol</li>
-            <li>Vice President, Hong Kong InnoVision</li>
+            <li class="member__creds--hidden">BBA (CUHK)</li>
+            <li class="member__creds--hidden">Charter President, The Rotary Club of Kwai Tsing</li>
+            <li class="member__creds--hidden">Vice President, Hong Kong Kowloon City Industry and Commerce Association</li>
+            <li class="member__creds--hidden">Vice President, Federation of Community Chest of Kowloon City</li>
+            <li class="member__creds--hidden">Deputy Commander, The Hong Kong Road Safety Patrol</li>
+            <li class="member__creds--hidden">Vice President, Hong Kong InnoVision</li>
           </ul>
+          <button class="member__more" data-more="6">+6 more credentials</button>
         </div>
       </article>
       <article class="member reveal">
         <div class="member__photo" style="background-image:url('./team-photos/match.jpg')" onerror="this.style.display='none'"></div>
-        <div class="member__body">
+        <div class="member__content">
           <div class="member__name-en">Match Fan</div>
           <div class="member__name-cn">范景誠</div>
           <div class="member__role">Co-Founder · CSO</div>
@@ -405,7 +410,7 @@ section{padding:120px 32px}
       </article>
       <article class="member reveal">
         <div class="member__photo" style="background-image:url('./team-photos/calvin.jpg')" onerror="this.style.display='none'"></div>
-        <div class="member__body">
+        <div class="member__content">
           <div class="member__name-en">Prof. Calvin Tse</div>
           <div class="member__name-cn">謝海發教授</div>
           <div class="member__role">Co-Founder</div>
@@ -413,23 +418,24 @@ section{padding:120px 32px}
             <li>FCPA (Practising)</li>
             <li>BBA (CUHK)</li>
             <li>LLB (UOL)</li>
-            <li>Master of Chinese Law (Renmin University of China)</li>
-            <li>Forbes China Outstanding Business Leaders (2022)</li>
-            <li>Ten Outstanding Young Persons of Hong Kong (2022)</li>
-            <li>City I&amp;T Grand Challenge Advisory Committee</li>
-            <li>Youth Development Commission, HKSAR</li>
-            <li>Member, Young Entrepreneur Committee, HKBU Foundation</li>
-            <li>Vice President, HKICPA</li>
-            <li>Permanent Director, Lok Sin Tong (2021–2023)</li>
-            <li>Member, Shandong Provincial Committee of the CPPCC</li>
-            <li>Tax Expert, State Taxation Administration (Hong Kong)</li>
-            <li>Expert, Zhuhai Municipal Finance and Banking Think Tank</li>
+            <li class="member__creds--hidden">Master of Chinese Law (Renmin University of China)</li>
+            <li class="member__creds--hidden">Forbes China Outstanding Business Leaders (2022)</li>
+            <li class="member__creds--hidden">Ten Outstanding Young Persons of Hong Kong (2022)</li>
+            <li class="member__creds--hidden">City I&amp;T Grand Challenge Advisory Committee</li>
+            <li class="member__creds--hidden">Youth Development Commission, HKSAR</li>
+            <li class="member__creds--hidden">Member, Young Entrepreneur Committee, HKBU Foundation</li>
+            <li class="member__creds--hidden">Vice President, HKICPA</li>
+            <li class="member__creds--hidden">Permanent Director, Lok Sin Tong (2021–2023)</li>
+            <li class="member__creds--hidden">Member, Shandong Provincial Committee of the CPPCC</li>
+            <li class="member__creds--hidden">Tax Expert, State Taxation Administration (Hong Kong)</li>
+            <li class="member__creds--hidden">Expert, Zhuhai Municipal Finance and Banking Think Tank</li>
           </ul>
+          <button class="member__more" data-more="11">+11 more credentials</button>
         </div>
       </article>
       <article class="member reveal">
         <div class="member__photo" style="background-image:url('./team-photos/kenneth.jpg')" onerror="this.style.display='none'"></div>
-        <div class="member__body">
+        <div class="member__content">
           <div class="member__name-en">Kenneth Lui</div>
           <div class="member__name-cn">雷琨傑</div>
           <div class="member__role">Co-Founder · CBO</div>
@@ -437,8 +443,9 @@ section{padding:120px 32px}
             <li>BBA Marketing (City University of Hong Kong)</li>
             <li>Charter Member, Rotary Club of Kwai Tsing</li>
             <li>Vice Secretary, Hong Kong InnoVision</li>
-            <li>SFC Responsible Officer</li>
+            <li class="member__creds--hidden">SFC Responsible Officer</li>
           </ul>
+          <button class="member__more" data-more="1">+1 more credential</button>
         </div>
       </article>
     </div>
@@ -464,6 +471,16 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -80px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Team: expand/collapse credentials
+document.querySelectorAll('.member__more').forEach(btn=>{
+  const more = btn.dataset.more;
+  btn.addEventListener('click',()=>{
+    const member = btn.closest('.member');
+    const expanded = member.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less' : `+${more} more credential${more==='1'?'':'s'}`;
+  });
+});
 </script>
 </body>
 </html>
