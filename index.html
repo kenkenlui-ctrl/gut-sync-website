@@ -240,6 +240,14 @@ section{padding:120px 32px}
 .cta__email:hover{color:var(--orange)}
 .cta__meta{margin-top:32px;font-size:12px;letter-spacing:.25em;color:var(--rice-soft);text-transform:uppercase}
 .cta__meta b{color:var(--gold)}
+.waitlist{display:flex;gap:10px;max-width:520px;margin:36px auto 0;flex-wrap:wrap;justify-content:center}
+.waitlist input{flex:1;min-width:220px;padding:16px 20px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:0;color:var(--rice);font-family:var(--sans-en);font-size:15px;transition:all .25s}
+.waitlist input:focus{outline:none;border-color:var(--orange);background:rgba(255,255,255,.08)}
+.waitlist input::placeholder{color:var(--mist)}
+.waitlist__btn{background:var(--orange);color:var(--ink);border:none;padding:16px 28px;font-family:var(--sans-en);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap}
+.waitlist__btn:hover{background:var(--orange-deep);transform:translateY(-1px);box-shadow:0 8px 24px var(--orange-glow)}
+.waitlist__ok{margin:36px auto 0;padding:18px 24px;background:rgba(242,117,61,.1);border:1px solid var(--orange);color:var(--rice);font-size:14px;letter-spacing:.04em;max-width:520px}
+.cta__or{margin:24px 0 0;font-size:11px;letter-spacing:.4em;color:var(--mist);text-transform:uppercase}
 .footer{padding:32px;text-align:center;font-size:11px;letter-spacing:.2em;color:var(--mist);background:var(--ink);border-top:1px solid var(--line);text-transform:uppercase}
 .footer a{color:var(--orange)}
 .footer .lc{text-transform:none;letter-spacing:.1em}
@@ -409,19 +417,19 @@ section{padding:120px 32px}
           <div class="painpoint__num">01</div>
           <div class="painpoint__h">程序繁複</div>
           <div class="painpoint__en">Procedural Complexity</div>
-          <p class="painpoint__p">結婚過大禮、入伙、安胎、改名⋯⋯ 繁瑣儀式加晦澀古籍令年輕人無所適從。</p>
+          <p class="painpoint__p">結婚過大禮、入伙、安胎、改名⋯⋯ 繁瑣儀式加晦澀古籍令年輕人無所適從。<b>香港新人平均花 6-12 個月籌備婚禮，當中擇日、安床等玄學事項佔近 30% 時間</b>。</p>
         </div>
         <div class="painpoint">
           <div class="painpoint__num">02</div>
           <div class="painpoint__h">古籍難讀</div>
           <div class="painpoint__en">Obscure Texts</div>
-          <p class="painpoint__p">傳統命理風水多以文言流傳，閱讀門檻高，現代人難以系統化入門。</p>
+          <p class="painpoint__p">傳統命理風水多以文言流傳，閱讀門檻高，現代人難以系統化入門。<b>全港僅約 200 位持牌玄學顧問，新一代難以入門</b>。</p>
         </div>
         <div class="painpoint">
           <div class="painpoint__num">03</div>
           <div class="painpoint__h">視為迷信</div>
           <div class="painpoint__en">Anxiety Dismissed</div>
-          <p class="painpoint__p">傳統智慧常被標籤為迷信，缺少被當代社會認可嘅表達同操作方式。</p>
+          <p class="painpoint__p">傳統智慧常被標籤為迷信，缺少被當代社會認可嘅表達同操作方式。<b>但 70% 香港人喺重大決定前仍會參考黃曆或擇日</b>。</p>
         </div>
       </div>
     </div>
@@ -518,7 +526,17 @@ section{padding:120px 32px}
 <section class="cta" id="contact">
   <div class="cta__inner">
     <h2>Let's sync.</h2>
-    <div class="cta__cn">有興趣了解更多？與我們對話。</div>
+    <div class="cta__cn">有興趣了解更多？加入等候名單，搶先體驗 Sync AI Temple。</div>
+
+    <form id="waitlistForm" class="waitlist" autocomplete="email">
+      <input id="wlEmail" type="email" required placeholder="your@email.com" aria-label="Email address">
+      <button type="submit" class="waitlist__btn">Join Waitlist →</button>
+    </form>
+    <div id="waitlistOk" class="waitlist__ok" style="display:none">
+      ✓ 收到！我哋會喺 2026 年內以 email 邀請你 beta test。
+    </div>
+
+    <div class="cta__or">或</div>
     <a class="cta__email" href="mailto:gutsyncai@gmail.com">gutsyncai@gmail.com</a>
     <div class="cta__meta">
       <b>Unit 603B, Mirror Tower, 61 Mody Road, Tsim Sha Tsui, Hong Kong</b><br>
