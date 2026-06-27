@@ -48,7 +48,7 @@
 {"@type":"Question","name":"Sync AI Temple 同一般通勝 app 有咩分別？","acceptedAnswer":{"@type":"Answer","text":"傳統通勝只提供通用宜忌表。Sync AI Temple 用 AI 將通曆、命理、風水知識結合用戶嘅生肖、八字、方位，提供真正個人化嘅建議，並且可以一鍵問事（婚嫁、入伙、開市等場景）。"}},
 {"@type":"Question","name":"點樣開始用 Sync AI Temple？","acceptedAnswer":{"@type":"Answer","text":"掃描官網 QR code 或直接喺 gut-sync.com 填 Email 加入等候名單，我哋會喺 2026 年內陸續邀請用戶 beta test。母公司 SyncBuddy Tech Limited 喺香港尖沙咀註冊，旗下產品包括 syncbuddy.ai。"}}
 ]}
-]};
+]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,6 +82,10 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{background:var(--ink);color:var(--rice);font-family:var(--sans-en),var(--sans-cn);font-size:16px;line-height:1.65;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
+
+/* Focus visibility — WCAG 2.4.7 (keyboard users can see what's focused) */
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:2px}
+.nav__burger:focus-visible,.nav__cta:focus-visible,.waitlist__btn:focus-visible,.member__more:focus-visible{outline-offset:4px}
 
 /* ===== NAV ===== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px 40px;display:flex;justify-content:space-between;align-items:center;transition:all .3s;background:linear-gradient(180deg,rgba(14,11,10,.7),rgba(14,11,10,0))}
@@ -582,18 +586,27 @@ if(burger){
 // Waitlist form: prevent default + show success
 const waitlistForm=document.getElementById('waitlistForm');
 if(waitlistForm){
-  waitlistForm.addEventListener('submit',(e)=>{
+  waitlistForm.addEventListener('submit',async (e)=>{
     e.preventDefault();
     const email=document.getElementById('wlEmail').value.trim();
     if(!email)return;
-    // Demo submit — wire to Formspree / Tally / your endpoint
-    fetch('https://formspree.io/f/xwpeblqr',{
-      method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},
-      body:JSON.stringify({email:email,source:'gut-sync.com',ts:Date.now()})
-    }).catch(()=>{});
-    document.getElementById('waitlistForm').style.display='none';
-    document.getElementById('waitlistOk').style.display='flex';
+    // Submit to FormSubmit.co (no signup, forwards to gutsyncai@gmail.com)
+    try{
+      const r=await fetch('https://formsubmit.co/ajax/gutsyncai@gmail.com',{
+        method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},
+        body:JSON.stringify({email:email,source:'gut-sync.com',ts:Date.now(),_subject:'Sync AI Temple — Waitlist sign-up'})
+      });
+      if(r.ok){showWaitlistOk()}else{fallbackMailto(email)}
+    }catch(_){fallbackMailto(email)}
   });
+}
+function showWaitlistOk(){
+  document.getElementById('waitlistForm').style.display='none';
+  document.getElementById('waitlistOk').style.display='flex';
+}
+function fallbackMailto(email){
+  // Last-resort: open user's mail client so the lead is never lost
+  window.location.href='mailto:gutsyncai@gmail.com?subject=Sync%20AI%20Temple%20%E2%80%94%20Waitlist%20sign-up&body='+encodeURIComponent('Email: '+email+'\nSource: gut-sync.com\nTime: '+new Date().toISOString());
 }
 </script>
 </body>
